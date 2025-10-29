@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+  <body>
+    <section class="vh-100" style="background-color: #0c0c34;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="../img/inicio_sesion.avif"
+                alt="login form"
+                style="height: 100%; width: 100%; object-fit: cover; border-radius: 1rem 0 0 1rem;" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                <div class="card-body p-4 p-lg-5 text-black">
+
+                <form>
+                    <!-- boton regresar -->
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-primary me-md-2" type="button"
+                        onclick="window.location.href='../index.html';"><</button>
+                    </div>
+                    <!-- fin boton regresar -->
+                    
+                    
+                    <div class="d-flex align-items-center mb-3 pb-1">
+                        <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                            <span class="h1 fw-bold mb-0">TotalCare</span>
+                    </div>
+
+                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Iniciar sesión</h5>
+
+                    <!-- boton Tipo de usuario -->
+                    <div class="dropdown mb-4">
+                      <button id="btnRol" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Tipo de usuario
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" data-rol="paciente">Paciente</a></li>
+                        <li><a class="dropdown-item" href="#" data-rol="medico">Médico</a></li>
+                        <li><a class="dropdown-item" href="#" data-rol="empleado">Empleado</a></li>
+                        <li><a class="dropdown-item" href="#" data-rol="administrador">Administrador</a></li>
+                      </ul>
+                    </div>
+                    <!-- fin boton acordeo -->
+
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="email" id="form2Example17" class="form-control form-control-lg" />
+                        <label class="form-label" for="form2Example17">Correo electronico</label>
+                    </div>
+
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="password" id="form2Example27" class="form-control form-control-lg" />
+                        <label class="form-label" for="form2Example27">Contraseña</label>
+                    </div>
+
+                    <div class="pt-1 mb-4">
+                        <button data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg btn-block" type="button">Iniciar sesión</button>
+                    </div>
+
+                    <a class="small text-muted" href="#!">¿Olvidaste la contraseña?</a>
+                    <p class="mb-5 pb-lg-2" style="color: #393f81;">¿No tienes cuenta? 
+                      <a href="./crear_cuenta.html" style="color: #393f81;">Regístrate aquí</a>
+                    </p>
+                    <a href="#!" class="small text-muted">Terminos de uso.</a>
+                    <a href="#!" class="small text-muted">Politicas de privacidad</a>
+                </form>
+
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </section>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+
+    <script>
+    let rolSeleccionado = ''; // Variable global para guardar el rol elegido
+
+    // Capturar el rol seleccionado desde el menú desplegable
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', e => {
+        rolSeleccionado = e.target.dataset.rol; // guarda el rol
+        document.getElementById('btnRol').textContent = e.target.textContent; // cambia el texto del botón
+      });
+    });
+
+    // Escuchar el clic del botón de inicio de sesión
+    document.querySelector('.btn-dark').addEventListener('click', async () => {
+      const email = document.getElementById('form2Example17').value.trim();
+      const password = document.getElementById('form2Example27').value.trim();
+
+      if (!email || !password) {
+        alert('Por favor ingresa tus credenciales.');
+        return;
+      }
+
+      try {
+        const response = await fetch('http://localhost:3000/api/usuarios/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || 'Credenciales incorrectas');
+        }
+
+        // Guardar datos del usuario en localStorage
+        localStorage.setItem('usuario', JSON.stringify(data.usuario));
+
+        // Redirigir según el rol obtenido del servidor (no el seleccionado)
+        switch (data.usuario.rol) {
+          case 'paciente':
+            window.location.href = './paciente.html';
+            break;
+          case 'medico':
+            window.location.href = './medico.html';
+            break;
+          case 'empleado':
+            window.location.href = './empleado.html';
+            break;
+          case 'administrador':
+            window.location.href = './administrador.html';
+            break;
+          default:
+            alert('Rol no reconocido.');
+        }
+      } catch (error) {
+        alert('Error: ' + error.message);
+      }
+    });
+    </script>
+
+      </body>
+</html>

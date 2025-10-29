@@ -1,0 +1,255 @@
+.logo {
+    height: 30px;
+    width: auto; /* para que no se deforme */
+}
+
+.carousel-item img {
+    max-height: 800px;
+    object-fit: cover; /* recorta sin deformar */
+}
+
+.custom-card {
+    max-width: 900px;
+    width: 100%;
+    }
+
+.btn_login{
+    color:#023E8A ;
+}
+
+.btn_perfil{
+    background-color: #0077B6;
+}
+
+.card {
+    border: none;
+    box-shadow: none; /* opcional, si quieres eliminar también la sombra */
+}
+
+
+h1{
+    text-align: center;
+    padding: 30px 0 30px 0;
+    font-size: 25px;
+}
+
+.cards img-fluid{
+    height: 300px; /* o la altura que quieras */
+    width: 100%;   /* para que siga ocupando todo el ancho de su columna */
+    object-fit: cover;
+}
+
+.btn_acordeon {
+    border: 1px solid #ced4da;       /* mismo borde de input */
+    border-radius: 0.375rem;         /* borde redondeado como input */
+    /* background-color: #fff;          fondo blanco */
+    padding: 0.375rem 0.75rem;       /* mismo padding de input */
+    font-size: 1rem;                 /* tamaño de fuente estándar */
+    width: 100%;                     /* para que sea ancho completo como un input */
+    margin-bottom: 1rem;             /* espacio inferior */
+    text-align: left;                /* texto alineado a la izquierda */
+    box-shadow: none;               /* sin sombra */
+}
+
+.btn_acordeon::after {
+    margin-left: auto;  /* empuja la flecha a la derecha */
+}
+
+.dropdown-menu {
+    width: 100%;         /* que el menú tenga mismo ancho del botón */
+}
+
+.bienvenido{
+    padding: 25px 20%;
+    color:#023E8A ;
+
+}
+
+.subtitulo{
+    padding: 50px 20%;
+    color:#023E8A;
+    font-size: 30px;
+
+}
+
+.subtitulo_page{
+    color:#023E8A ;
+    
+}
+
+h3 {
+    padding: 25px 20%;
+    font-size: 25px;
+}
+
+.cuadricula-card {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+    background-color: #f8f9fa;
+}
+
+.cuadricula-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 12px 3px #0077B6; /* resplandor azul */
+    transform: translateY(-3px); /* opcional: ligera elevación */
+    border-color: transparent;  /* quita borde gris para que se vea limpio */
+}
+
+.cuadricula-card i {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: #0d6efd; /* azul Bootstrap */
+}
+
+@media (max-width: 576px) {
+    .col-custom {
+        flex: 0 0 50%;
+        max-width: 50%;
+        margin-bottom: 10px;
+    }
+}
+
+.parrafo_usuario {
+    padding: 0px 20%;
+    margin-bottom: 200px;
+}
+
+.parrafo_acerca{
+    padding: 0px 20%;
+}
+
+.card_acerca{
+    padding: 10% 0px;
+}
+
+footer{
+    margin-top: 100px;
+}
+
+
+/* registro */
+/* @media (min-width: 1025px) {
+    .h-custom {
+        height: 100vh !important;
+}
+} */
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+}
+.card-registration .select-arrow {
+    top: 13px;
+}
+
+.gradient-custom-2 {
+/* fallback for old browsers */
+    background: #a1c4fd;
+
+/* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(161, 196, 253, 1), rgba(194, 233, 251, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(161, 196, 253, 1), rgba(194, 233, 251, 1))
+}
+
+/* .card_about{
+    padding: 20px 0 ;
+} */
+
+.bg-indigo {
+    background-color: #4835d4;
+}
+
+.img-login{
+    max-height: 700px;
+    
+}
+
+/* estilo cita medica */
+.citas-section {
+  background-color: #f5f9ff;
+}
+
+.cita-form {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #dee2e6;
+}
+
+.cita-form .form-label {
+  font-weight: 500;
+  color: #0c0c34;
+}
+
+.cita-form .form-control,
+.cita-form .form-select {
+  border-radius: 0.5rem;
+  border: 1px solid #ced4da;
+}
+
+.cita-form .btn-primary {
+  background-color: #0077B6;
+  border-color: #0077B6;
+}
+
+.cita-form .btn-primary:hover {
+  background-color: #023E8A;
+  border-color: #023E8A;
+}
+
+/* perfil admin */
+
+.admin-dashboard h2 {
+  font-weight: 600;
+  text-align: center;
+}
+
+.stat-card {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  padding: 20px;
+  transition: 0.3s ease;
+}
+
+.stat-card:hover {
+  box-shadow: 0 0 10px rgba(0, 119, 182, 0.3);
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: bold;
+  color: #023E8A;
+}
+
+.admin-option {
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: #ffffff;
+  transition: transform 0.2s ease;
+}
+
+.admin-option:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px #0077B6;
+}
+
+.btn_admin{
+  background-color: #023E8A;
+  color: white;
+  border: none;
+}
+.btn_admin:hover {
+  background-color: #012f6a; /* tono más oscuro en hover */
+}
+
+/* fin perfil admin */

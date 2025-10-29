@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <!-- Google Material Symbols (nuevo sistema) -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <title>Centro medico</title>
+</head>
+<body class="body_page" >
+
+    <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <!-- Toggle button (correct Bootstrap 5 syntax) -->
+      <button 
+      class="navbar-toggler" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" 
+      aria-expanded="false" 
+      aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Brand logo -->
+      <a class="navbar-brand mt-2 mt-lg-0" href="#">
+        <img class="logo" src="../img/sena-colombia-logo-png_seeklogo-124780.png" height="15" alt="Logo" />
+      </a>
+
+      <!-- Collapsible menu -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Navigation links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="./servicios.html">Servicios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./preguntas_frecuentes.html">Preguntas frecuentes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./acerca_de.html">Acerca de</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right-side buttons -->
+      <div class="d-flex align-items-center">
+        <button type="button" class="btn_login btn btn-link px-3 me-2" onclick="window.location.href='./HTML/login.html';">
+          Cerrar sesión
+        </button>
+        <button type="button" class="btn_perfil btn btn-primary me-3">Perfil</button>
+      </div>
+    </div>
+  </nav>
+    <!-- Navbar -->
+
+
+    
+    <!-- registro -->
+    <section class="h-100 h-custom gradient-custom-2"  >
+      
+      <div class="container py-5 h-100" >
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12">
+            <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+              <div class="card-body p-0">
+                <div class="row g-0">
+                  <div class="col-lg-6">
+                    <div class="p-5">
+                      
+                      <h3 class=" fw-normal mb-5" style="color: #0c0c34;">Datos personales</h3>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+
+                        <div data-mdb-input-init class="form-outline">
+                          <input type="text" id="nombres" class="form-control form-control-lg" />
+                          <label for="nombres" class="form-label">Nombres</label>
+                        </div>
+
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+
+                        <div data-mdb-input-init class="form-outline">
+                          <input type="text" id="apellidos" class="form-control form-control-lg" />
+                          <label for="apellidos" class="form-label">Apellidos</label>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+
+                        <div data-mdb-input-init class="form-outline">
+                          <input type="text" id="form3Examplev2" class="form-control form-control-lg" />
+                          <label class="form-label" for="form3Examplev2">Tipo de documento</label>
+                        </div>
+
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+
+                        <div data-mdb-input-init class="form-outline">
+                          <input type="text" id="form3Examplev3" class="form-control form-control-lg" />
+                          <label class="form-label" for="form3Examplev3">Número de documento</label>
+                        </div>
+
+                      </div>
+                    </div>
+
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+
+                        <div data-mdb-input-init class="form-outline">
+                          <input type="text" id="form3Examplev2" class="form-control form-control-lg" />
+                          <label class="form-label" for="form3Examplev2">Fecha de nacimiento</label>
+                        </div>
+
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+
+                        <div data-mdb-input-init class="form-outline">
+                          <input type="text" id="form3Examplev3" class="form-control form-control-lg" />
+                          <label class="form-label" for="form3Examplev3">Genero</label>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <div class="mb-4 pb-2">
+                      <div data-mdb-input-init class="form-outline">
+                        <input type="text" id="form3Examplev4" class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Examplev4">Cargo o labor</label>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+
+                        <div data-mdb-input-init class="form-outline">
+                          <input type="text" id="form3Examplev2" class="form-control form-control-lg" />
+                          <label class="form-label" for="form3Examplev2">Número de afiliación</label>
+                        </div>
+
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+
+                        <div data-mdb-input-init class="form-outline">
+                          <input type="text" id="form3Examplev3" class="form-control form-control-lg" />
+                          <label class="form-label" for="form3Examplev3">Entidad de salud afiliada</label>
+                        </div>
+
+                        <div class="mb-4 pb-2">
+                          <label class="form-label" for="rolSelect">Tipo de usuario</label>
+                          <select id="rolSelect" class="form-select form-select-lg">
+                            <option value="paciente">Paciente</option>
+                            <option value="medico">Médico</option>
+                            <option value="empleado">Empleado</option>
+                            <option value="administrador">Administrador</option>
+                          </select>
+                        </div>
+
+                        <div class="mb-4 pb-2" id="codigoSeguridadDiv" style="display: none;">
+                          <label class="form-label" for="codigoSeguridad">Código de seguridad</label>
+                          <input type="text" id="codigoSeguridad" class="form-control form-control-lg" placeholder="Ingrese el código suministrado">
+                        </div>
+
+
+                      </div>
+                    </div>
+
+
+                    </div>
+                  </div>
+                  <div class="col-lg-6 bg-indigo text-white" style="background-color: #0c0c34;">
+                    <div class="p-5">
+                      
+                    <div class="d-flex justify-content-between align-items-center mb-4" >
+                      <h3 class="fw-normal mb-0">Datos de contacto</h3>
+                        <!-- boton regresar -->  
+                      <button class="btn btn-primary" type="button" onclick="window.location.href='../index.html';">
+                          &lt;
+                        </button>
+                        <!-- fin boton regresar -->
+                    </div>
+
+                        <div class="mb-4 pb-2">
+                          <div data-mdb-input-init class="form-outline form-white">
+                            <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Examplea2">Dirección</label>
+                          </div>
+                        </div>
+
+                      <div class="mb-4 pb-2">
+                        <div data-mdb-input-init class="form-outline form-white">
+                          <input type="text" id="form3Examplea3" class="form-control form-control-lg" />
+                          <label class="form-label" for="form3Examplea3">Ciudad/municipio</label>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-5 mb-4 pb-2">
+
+                          <div data-mdb-input-init class="form-outline form-white">
+                            <input type="text" id="form3Examplea4" class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Examplea4">Departamento</label>
+                          </div>
+
+                        </div>
+                        <div class="col-md-7 mb-4 pb-2">
+
+                          <div data-mdb-input-init class="form-outline form-white">
+                            <input type="text" id="form3Examplea5" class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Examplea5">Localidad</label>
+                          </div>
+
+                        </div>
+                      </div>
+
+                  <div class="mb-4 pb-2">
+                    <div data-mdb-input-init class="form-outline form-white">
+                      <input type="text" id="form3Examplea6" class="form-control form-control-lg" />
+                      <label class="form-label" for="form3Examplea6">Telefono</label>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-5 mb-4 pb-2">
+
+                      <div data-mdb-input-init class="form-outline form-white">
+                        <input type="password" id="password" class="form-control form-control-lg" />
+                        <label for="password" class="form-label">Contraseña</label>
+                      </div>
+
+                    </div>
+                    <div class="col-md-7 mb-4 pb-2">
+
+                      <div data-mdb-input-init class="form-outline form-white">
+                        <input type="password" id="confirmar" class="form-control form-control-lg" />
+                        <label for="confirmar" class="form-label">Confirmar contraseña</label>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div data-mdb-input-init class="form-outline form-white">
+                      <input type="email" id="correo" class="form-control form-control-lg" />
+                      <label for="correo" class="form-label">Correo electrónico</label>
+                    </div>
+                  </div>
+
+                  <div class="form-check d-flex justify-content-start mb-4 pb-3">
+                    <input class="form-check-input me-3" type="checkbox" value="" id="form2Example3c" />
+                    <label class="form-check-label text-white" for="form2Example3">
+                      Acepto los <a href="#!" class="text-white"><u>Terminos y condiciones</u></a> de este sitio.
+                    </label>
+                  </div>
+                  
+
+                  <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-light btn-lg"
+                    data-mdb-ripple-color="dark">Registrarse</button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- fin registro -->
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-body-tertiary text-muted" >
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom text-white" style="background-color: #0077B6;">
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block" >
+                <span>Conecta con nosotros:</span>
+            </div>
+            <!-- Left -->
+
+            <!-- Right -->
+            <div>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Links  -->
+        <section class="" >
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>Información sobre TotalCare
+                        </h6>
+                        <!-- Links -->
+                    <p>
+                        <a href="#!" class="text-reset">Ubicación</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Acerca de este sitio</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Requisitos para admisión de estudiantes y profesionales</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Red informativa</a>
+                    </p>
+                    </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Atención medica
+                    </h6>
+                    <p>
+                        <a href="#!" class="text-reset">Maternidad y primera infancia</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Programas de salud para empresas</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Programas de salud para ejecutivos</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Cuota moderadora y tarifas</a>
+                    </p>
+                </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Consulta
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Politicas de uso y seguridad</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Politicas de Seguridad y Ciberseguridad</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Políticas de privacidad y datos y Ley de datos personales</a>
+          </p>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contactanos</h6>
+          <p><i class="fas fa-home me-3"></i> Bogota, BTA 10012, COL</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            CentroMedico@TotalCare.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 57 312 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 57 321 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4 text-white" style="background-color: #0c0c34;">
+    © 2025 Copyright:
+    <a class="text-reset fw-bold " href="#" >CentroMedicoTotalCare.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Mostrar campo de código de seguridad según el rol
+      document.getElementById('rolSelect').addEventListener('change', () => {
+        const rol = document.getElementById('rolSelect').value;
+        const divCodigo = document.getElementById('codigoSeguridadDiv');
+        if (rol !== 'paciente') {
+          divCodigo.style.display = 'block';
+        } else {
+          divCodigo.style.display = 'none';
+        }
+      });
+    </script>
+
+    <script>
+      document.querySelector('.btn-light').addEventListener('click', async () => {
+        const nombres = document.getElementById('nombres').value.trim();
+        const apellidos = document.getElementById('apellidos').value.trim();
+        const correo = document.getElementById('correo').value.trim();
+        const contrasena = document.getElementById('password').value.trim();
+        const confirmar = document.getElementById('confirmar').value.trim();
+        const rol = document.getElementById('rolSelect').value;
+        const codigoSeguridad = document.getElementById('codigoSeguridad').value.trim();
+
+        if (!nombres || !apellidos || !correo || !contrasena || !confirmar) {
+          alert('Por favor completa todos los campos obligatorios.');
+          return;
+        }
+
+        if (contrasena !== confirmar) {
+          alert('Las contraseñas no coinciden.');
+          return;
+        }
+
+        // Validar código de seguridad si el rol no es paciente
+        const CODIGO_VALIDO = 'ADMIN2025'; // Puedes cambiarlo luego a una variable .env
+        if (rol !== 'paciente' && codigoSeguridad !== CODIGO_VALIDO) {
+          alert('Código de seguridad inválido. Solicítalo al administrador.');
+          return;
+        }
+
+        try {
+          const response = await fetch('http://localhost:3000/api/usuarios/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              nombre: `${nombres} ${apellidos}`,
+              email: correo,
+              password: contrasena,
+              rol
+            })
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) throw new Error(data.message || 'Error al registrar usuario');
+
+          alert('✅ Registro exitoso. Ahora puedes iniciar sesión.');
+          window.location.href = './login.html';
+        } catch (error) {
+          alert('❌ Error: ' + error.message);
+        }
+      });
+    </script>
+
+
+
+  </body>
+</html>
+
+
+
+
+
