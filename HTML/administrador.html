@@ -32,13 +32,16 @@
 
       <!-- Brand logo -->
       <a class="navbar-brand mt-2 mt-lg-0" href="#">
-        <img class="logo" src="../img/sena-colombia-logo-png_seeklogo-124780.png" height="15" alt="Logo" />
+        <img class="logo" src="../img/logotipo_TC.png" height="15" alt="Logo" />
       </a>
 
       <!-- Collapsible menu -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Navigation links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="./administrador.html">Inicio</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="./servicios.html">Servicios</a>
           </li>
@@ -53,10 +56,22 @@
 
       <!-- Right-side buttons -->
       <div class="d-flex align-items-center">
-        <button type="button" class="btn_login btn btn-link px-3 me-2" onclick="window.location.href='./login.html';">
-          Cerrar sesión
-        </button>
-        <button type="button" class="btn_perfil btn btn-primary me-3">Perfil</button>
+  <!-- Menú desplegable de Perfil -->
+  <div class="dropdown me-3">
+    <button 
+      class="btn_perfil btn btn-primary dropdown-toggle" 
+      type="button" 
+      id="perfilMenu" 
+      data-bs-toggle="dropdown" 
+      aria-expanded="false">
+      Perfil
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilMenu">
+      <li><a class="dropdown-item" href="./mi_informacion.html">Mi información</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item text-danger" href="#" id="cerrarSesionBtn">Cerrar sesión</a></li>
+    </ul>
+  </div>
       </div>
     </div>
   </nav>
@@ -64,7 +79,7 @@
 
 
 
-    <h2 class="bienvenido">Bienvenido,</h1>
+    <h2 class="saludo">Hola,</h2>
     <h3 class="subtitulo_page">Panel del Administrador</h3>
 
     <!-- anexo -->
@@ -72,24 +87,35 @@
 
   <!-- Sección resumen -->
   <div class="row mb-4">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="card stat-card text-center">
         <h5>Usuarios registrados</h5>
-        <p class="stat-number">542</p>
+        <p class="stat-number" id="usuariosRegistrados">Cargando...</p>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="card stat-card text-center">
-        <h5>Citas del día</h5>
-        <p class="stat-number">36</p>
-      </div>
-    </div>
-    <div class="col-md-4">
+
+    <div class="col-md-3">
       <div class="card stat-card text-center">
         <h5>Médicos activos</h5>
-        <p class="stat-number">18</p>
+        <p class="stat-number" id="medicosActivos">Cargando...</p>
       </div>
     </div>
+
+    <div class="col-md-3">
+      <div class="card stat-card text-center">
+        <h5>Pacientes registrados</h5>
+        <p class="stat-number" id="pacientesRegistrados">Cargando...</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card stat-card text-center">
+        <h5>Citas agendadas</h5>
+        <p class="stat-number" id="citasRegistradas">Cargando...</p>
+      </div>
+    </div>
+  </div>
+
   </div>
 
   <!-- Gestión -->
@@ -331,5 +357,43 @@
         window.location.href = './login.html';
       }
     </script>
+
+    <script>
+    document.getElementById('cerrarSesionBtn').addEventListener('click', () => {
+      // Elimina los datos del usuario almacenados
+      localStorage.removeItem('usuario');
+      // Redirige al login
+      window.location.href = './login.html';
+    });
+    </script>
+
+
+    <!-- conteo usuarios, pacientes, medicos y citas -->
+    <script>
+      const BACKEND_URL = 'https://centro-medico-totalcare-backend.onrender.com'; // Cambia por tu URL de Render o localhost
+      // const BACKEND_URL = 'http://localhost:3000'; // Cambia por tu URL de Render o localhost
+      
+
+      async function obtenerConteo(endpoint, elementoId) {
+        const el = document.getElementById(elementoId);
+        try {
+          const response = await fetch(`${BACKEND_URL}${endpoint}`);
+          if (!response.ok) throw new Error('Error al obtener datos');
+          const data = await response.json();
+          el.textContent = data.total ?? 0;
+        } catch (error) {
+          console.error('Error en', endpoint, error);
+          el.textContent = 'Error';
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        obtenerConteo('/api/usuarios/count', 'usuariosRegistrados');
+        obtenerConteo('/api/usuarios/count/medicos', 'medicosActivos');
+        obtenerConteo('/api/usuarios/count/pacientes', 'pacientesRegistrados');
+        obtenerConteo('/api/citas/count', 'citasRegistradas');
+      });
+    </script>
+
   </body>
 </html>

@@ -31,8 +31,8 @@
       </button>
 
       <!-- Brand logo -->
-      <a class="navbar-brand mt-2 mt-lg-0" href="#">
-        <img class="logo" src="../img/sena-colombia-logo-png_seeklogo-124780.png" height="15" alt="Logo" />
+      <a class="navbar-brand mt-2 mt-lg-0" href="../index.html">
+        <img class="logo" src="../img/logotipo_TC.png" height="15" alt="Logo" />
       </a>
 
       <!-- Collapsible menu -->
@@ -53,10 +53,10 @@
 
       <!-- Right-side buttons -->
       <div class="d-flex align-items-center">
-        <button type="button" class="btn_login btn btn-link px-3 me-2" onclick="window.location.href='./HTML/login.html';">
-          Cerrar sesión
+        <button type="button" class="btn_login btn btn-primary me-3" onclick="window.location.href='./login.html';">
+          Iniciar sesión
         </button>
-        <button type="button" class="btn_perfil btn btn-primary me-3">Perfil</button>
+
       </div>
     </div>
   </nav>
@@ -101,8 +101,14 @@
                       <div class="col-md-6 mb-4 pb-2">
 
                         <div data-mdb-input-init class="form-outline">
-                          <input type="text" id="form3Examplev2" class="form-control form-control-lg" />
-                          <label class="form-label" for="form3Examplev2">Tipo de documento</label>
+                          <select id="tipo_documento" class="form-select form-select-lg" required>
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            <option value="Masculino">Cédula de Ciudadania</option>
+                            <option value="Femenino">Tarjeta de Identidad</option>
+                            <option value="Femenino">Cédula de Extranjería</option>
+                            <option value="Femenino">Pasaporte</option>
+                          </select>
+                          <label class="form-label" for="tipo_documento">Tipo de documento</label>
                         </div>
 
                       </div>
@@ -121,16 +127,27 @@
                       <div class="col-md-6 mb-4 pb-2">
 
                         <div data-mdb-input-init class="form-outline">
-                          <input type="text" id="form3Examplev2" class="form-control form-control-lg" />
-                          <label class="form-label" for="form3Examplev2">Fecha de nacimiento</label>
+                          <input 
+                            type="date" 
+                            id="fechaNacimiento" 
+                            class="form-control form-control-lg"
+                            min="1900-01-01" 
+                            max="2025-12-31" 
+                            required
+                          />
+                          <label class="form-label" for="fechaNacimiento">Fecha de nacimiento</label>
                         </div>
 
                       </div>
                       <div class="col-md-6 mb-4 pb-2">
 
                         <div data-mdb-input-init class="form-outline">
-                          <input type="text" id="form3Examplev3" class="form-control form-control-lg" />
-                          <label class="form-label" for="form3Examplev3">Genero</label>
+                          <select id="genero" class="form-select form-select-lg" required>
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                          </select>
+                          <label class="form-label" for="genero">Género</label>
                         </div>
 
                       </div>
@@ -146,18 +163,6 @@
                     <div class="row">
                       <div class="col-md-6 mb-4 pb-2">
 
-                        <div data-mdb-input-init class="form-outline">
-                          <input type="text" id="form3Examplev2" class="form-control form-control-lg" />
-                          <label class="form-label" for="form3Examplev2">Número de afiliación</label>
-                        </div>
-
-                      </div>
-                      <div class="col-md-6 mb-4 pb-2">
-
-                        <div data-mdb-input-init class="form-outline">
-                          <input type="text" id="form3Examplev3" class="form-control form-control-lg" />
-                          <label class="form-label" for="form3Examplev3">Entidad de salud afiliada</label>
-                        </div>
 
                         <div class="mb-4 pb-2">
                           <label class="form-label" for="rolSelect">Tipo de usuario</label>
@@ -454,7 +459,9 @@
         }
 
         try {
-          const response = await fetch('http://localhost:3000/api/usuarios/register', {
+            const response = await fetch('https://centro-medico-totalcare-backend.onrender.com/api/usuarios/register',
+            // const response = await fetch('http://localhost:3000/api/usuarios/register',
+            {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

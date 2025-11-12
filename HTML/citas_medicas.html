@@ -14,76 +14,7 @@
     <title>Centro medico</title>
 </head>
 
-<script>
-document.addEventListener('DOMContentLoaded', async () => {
-  const form = document.querySelector('.cita-form');
-  const selectEspecialidad = document.getElementById('especialidad');
 
-  // 🩺 Cargar especialidades desde el backend
-  try {
-    const res = await fetch('http://localhost:3000/api/doctores');
-    const doctores = await res.json();
-
-    // Limpiamos opciones y agregamos dinámicamente
-    selectEspecialidad.innerHTML = '<option selected disabled>Selecciona una especialidad</option>';
-
-    doctores.forEach(doc => {
-      const option = document.createElement('option');
-      option.value = doc._id; // Usamos el ID del doctor
-      option.textContent = `${doc.nombre} - ${doc.especialidad}`;
-      selectEspecialidad.appendChild(option);
-    });
-
-  } catch (err) {
-    console.error('Error cargando doctores:', err);
-    selectEspecialidad.innerHTML = '<option disabled>Error al cargar especialidades</option>';
-  }
-
-  // 🧾 Envío del formulario
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const nombre = document.getElementById('nombre').value;
-    const documento = document.getElementById('documento').value;
-    const correo = document.getElementById('correo').value;
-    const telefono = document.getElementById('telefono').value;
-    const doctorId = document.getElementById('especialidad').value; // ahora contiene el ID del doctor
-    const fecha = document.getElementById('fecha').value;
-    const hora = document.getElementById('hora').value;
-    const motivo = document.getElementById('motivo').value;
-
-    // Por ahora simulamos el paciente ID (podría venir de login más adelante)
-    const pacienteId = "671e3a9dc56b0d6a0f1a9b98";
-
-    const citaData = {
-      doctorId,
-      pacienteId,
-      fecha: new Date(`${fecha}T${hora}`),
-      motivo
-    };
-
-    try {
-      const res = await fetch('http://localhost:3000/api/citas', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(citaData)
-      });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        alert('✅ Cita registrada exitosamente');
-        form.reset();
-      } else {
-        alert('❌ Error al registrar la cita: ' + data.message);
-      }
-    } catch (err) {
-      console.error(err);
-      alert('⚠️ No se pudo conectar con el servidor');
-    }
-  });
-});
-</script>
 
 
 
@@ -106,13 +37,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       <!-- Brand logo -->
       <a class="navbar-brand mt-2 mt-lg-0" href="#">
-        <img class="logo" src="../img/sena-colombia-logo-png_seeklogo-124780.png" height="15" alt="Logo" />
+        <img class="logo" src="../img/logotipo_TC.png" height="15" alt="Logo" />
       </a>
 
       <!-- Collapsible menu -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Navigation links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="./paciente.html">Inicio</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="./servicios.html">Servicios</a>
           </li>
@@ -127,18 +61,29 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       <!-- Right-side buttons -->
       <div class="d-flex align-items-center">
-        <button type="button" class="btn_login btn btn-link px-3 me-2" onclick="window.location.href='./HTML/login.html';">
-          Cerrar sesión
-        </button>
-        <button type="button" class="btn_perfil btn btn-primary me-3">Perfil</button>
+  <!-- Menú desplegable de Perfil -->
+  <div class="dropdown me-3">
+    <button 
+      class="btn_perfil btn btn-primary dropdown-toggle" 
+      type="button" 
+      id="perfilMenu" 
+      data-bs-toggle="dropdown" 
+      aria-expanded="false">
+      Perfil
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilMenu">
+      <li><a class="dropdown-item" href="./mi_informacion.html">Mi información</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item text-danger" href="#" id="cerrarSesionBtn">Cerrar sesión</a></li>
+    </ul>
+  </div>
       </div>
     </div>
   </nav>
     <!-- Navbar -->
-
     
 
-    <h2 class="bienvenido">Agenda tu Cita Médica</h2>
+    <h2 class="saludo">Agenda tu Cita Médica</h2>
 
     
     <!-- Sección de agendamiento de citas -->
@@ -397,5 +342,89 @@ document.addEventListener('DOMContentLoaded', async () => {
 <!-- Footer -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+
+
+    <script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const form = document.querySelector('.cita-form');
+  const selectEspecialidad = document.getElementById('especialidad');
+
+  // 🩺 Cargar especialidades desde el backend
+  try {
+    const res = await fetch('https://centro-medico-totalcare-backend.onrender.com/api/doctores');
+    // const res = await fetch('http://localhost:3000/api/doctores');
+    const doctores = await res.json();
+
+    // Limpiamos opciones y agregamos dinámicamente
+    selectEspecialidad.innerHTML = '<option selected disabled>Selecciona una especialidad</option>';
+
+    doctores.forEach(doc => {
+      const option = document.createElement('option');
+      option.value = doc._id; // Usamos el ID del doctor
+      option.textContent = `${doc.nombre} - ${doc.especialidad}`;
+      selectEspecialidad.appendChild(option);
+    });
+
+  } catch (err) {
+    console.error('Error cargando doctores:', err);
+    selectEspecialidad.innerHTML = '<option disabled>Error al cargar especialidades</option>';
+  }
+
+  // 🧾 Envío del formulario
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const nombre = document.getElementById('nombre').value;
+  const documento = document.getElementById('documento').value;
+  const correo = document.getElementById('correo').value;
+  const telefono = document.getElementById('telefono').value;
+  const doctorId = document.getElementById('especialidad').value;
+  const fecha = document.getElementById('fecha').value;
+  const hora = document.getElementById('hora').value;
+  const motivo = document.getElementById('motivo').value;
+
+  // ✅ Obtener ID del paciente autenticado
+  const usuario = JSON.parse(localStorage.getItem('usuario'));
+  if (!usuario) {
+    alert('⚠️ Debes iniciar sesión para agendar una cita.');
+    window.location.href = './login.html';
+    return;
+  }
+
+  const pacienteId = usuario.id; // Asegúrate de que en tu backend el campo sea "_id"
+
+  const citaData = {
+    doctorId,
+    pacienteId,
+    fecha: new Date(`${fecha}T${hora}`),
+    motivo
+  };
+
+  try {
+    console.log('Datos de cita enviados:', citaData);
+    const res = await fetch('https://centro-medico-totalcare-backend.onrender.com/api/citas', {
+    // const res = await fetch('http://localhost:3000/api/citas', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(citaData)
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      alert('✅ Cita registrada exitosamente');
+      form.reset();
+      window.location.href = './paciente.html'; // redirigir al inicio del paciente
+    } else {
+      alert('❌ Error al registrar la cita: ' + data.message);
+    }
+  } catch (err) {
+    console.error(err);
+    alert('⚠️ No se pudo conectar con el servidor');
+  }
+});
+
+});
+</script>
+  </body>
 </html>

@@ -14,11 +14,11 @@
     }
 
 .btn_login{
-    color:#023E8A ;
+    background-color: #023E8A;
 }
 
 .btn_perfil{
-    background-color: #0077B6;
+    background-color: #023E8A;
 }
 
 .card {
@@ -59,11 +59,12 @@ h1{
     width: 100%;         /* que el menú tenga mismo ancho del botón */
 }
 
-.bienvenido{
+.saludo{
     padding: 25px 20%;
     color:#023E8A ;
 
 }
+
 
 .subtitulo{
     padding: 50px 20%;

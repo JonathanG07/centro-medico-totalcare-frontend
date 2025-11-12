@@ -32,13 +32,16 @@
 
       <!-- Brand logo -->
       <a class="navbar-brand mt-2 mt-lg-0" href="#">
-        <img class="logo" src="../img/sena-colombia-logo-png_seeklogo-124780.png" height="15" alt="Logo" />
+        <img class="logo" src="../img/logotipo_TC.png" height="15" alt="Logo" />
       </a>
 
       <!-- Collapsible menu -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Navigation links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="./medico.html">Inicio</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="./servicios.html">Servicios</a>
           </li>
@@ -53,18 +56,31 @@
 
       <!-- Right-side buttons -->
       <div class="d-flex align-items-center">
-        <button type="button" class="btn_login btn btn-link px-3 me-2" onclick="window.location.href='./HTML/login.html';">
-          Cerrar sesión
-        </button>
-        <button type="button" class="btn_perfil btn btn-primary me-3">Perfil</button>
+  <!-- Menú desplegable de Perfil -->
+  <div class="dropdown me-3">
+    <button 
+      class="btn_perfil btn btn-primary dropdown-toggle" 
+      type="button" 
+      id="perfilMenu" 
+      data-bs-toggle="dropdown" 
+      aria-expanded="false">
+      Perfil
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilMenu">
+      <li><a class="dropdown-item" href="./mi_informacion.html">Mi información</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item text-danger" href="#" id="cerrarSesionBtn">Cerrar sesión</a></li>
+    </ul>
+  </div>
       </div>
     </div>
   </nav>
     <!-- Navbar -->
 
 
+
     
-    <h2 class="bienvenido">Bienvenido,</h1>
+    <h2 class="saludo">Hola,</h1>
 
     <div class="parrafo_usuario">
         <p>
@@ -272,5 +288,35 @@
 <!-- Footer -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+
+    <!-- Nombre en saludo -->
+<script>
+  const usuario = JSON.parse(localStorage.getItem('usuario'));
+
+  if (usuario && usuario.nombre && usuario.rol) {
+    const nombre = usuario.nombre
+      .split(' ')
+      .map(p => p.charAt(0).toUpperCase() + p.slice(1).toLowerCase())
+      .join(' ');
+
+    const rol = usuario.rol.charAt(0).toUpperCase() + usuario.rol.slice(1).toLowerCase();
+
+    document.querySelector('.saludo').textContent = `Hola, ${nombre}`;
+    // document.getElementById('rolUsuario').textContent = `Rol: ${rol}`;
+  } else {
+    window.location.href = './login.html';
+  }
+</script>
+
+    <!-- cierre de sesion -->
+    <script>
+    document.getElementById('cerrarSesionBtn').addEventListener('click', () => {
+      // Elimina los datos del usuario almacenados
+      localStorage.removeItem('usuario');
+      // Redirige al login
+      window.location.href = './login.html';
+    });
+    </script>
+
+  </body>
 </html>
