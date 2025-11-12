@@ -468,7 +468,8 @@
               nombre: `${nombres} ${apellidos}`,
               email: correo,
               password: contrasena,
-              rol
+              rol,
+              codigoSeguridad: rol !== 'paciente' ? codigoSeguridad : null
             })
           });
 
