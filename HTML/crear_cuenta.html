@@ -440,6 +440,7 @@
         const confirmar = document.getElementById('confirmar').value.trim();
         const rol = document.getElementById('rolSelect').value;
         const codigoSeguridad = document.getElementById('codigoSeguridad').value.trim();
+        const cargoLabor = document.getElementById('form3Examplev4').value.trim(); // 👈 campo de cargo/labor
 
         if (!nombres || !apellidos || !correo || !contrasena || !confirmar) {
           alert('Por favor completa todos los campos obligatorios.');
@@ -459,18 +460,29 @@
         }
 
         try {
-            const response = await fetch('https://centro-medico-totalcare-backend.onrender.com/api/usuarios/register',
-            // const response = await fetch('http://localhost:3000/api/usuarios/register',
-            {
+          // 🧩 Construimos el cuerpo base del usuario
+          let body = {
+            nombre: `${nombres} ${apellidos}`,
+            email: correo,
+            password: contrasena,
+            rol,
+            codigoSeguridad: rol !== 'paciente' ? codigoSeguridad : null
+          };
+
+          // 🩺 Si es médico, agregar la especialidad usando el campo “Cargo o labor”
+          if (rol === 'medico') {
+            body.especialidad = cargoLabor;
+          }
+
+          // 🧾 Si es empleado, puedes guardar su cargo
+          if (rol === 'empleado') {
+            body.cargo = cargoLabor;
+          }
+
+          const response = await fetch('https://centro-medico-totalcare-backend.onrender.com/api/usuarios/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              nombre: `${nombres} ${apellidos}`,
-              email: correo,
-              password: contrasena,
-              rol,
-              codigoSeguridad: rol !== 'paciente' ? codigoSeguridad : null
-            })
+            body: JSON.stringify(body)
           });
 
           const data = await response.json();
